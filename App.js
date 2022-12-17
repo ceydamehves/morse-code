@@ -8,12 +8,14 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native';
+import Clipboard from '@react-native-clipboard/clipboard';
 import { useState, useEffect } from "react";
 
 function App ({ navigation }) {
 
   const [showConverted, setShowConverted] = useState(false);
   const [text, onChangeText] = useState("");
+  const [clearText] = useState("")
 
   const morseCode = {
     "A": ".-",
@@ -49,14 +51,19 @@ function App ({ navigation }) {
     }).join("");
   };
 
+  const copy = () => Clipboard.setString(convertToMorse(text));
+  console.log(convertToMorse(text))
   return (
     <SafeAreaView style={{flex:1, backgroundColor:'#f1f1f1'}}>  
       <View style={styles.responsiveView}> 
-          <View style={{margin:10, backgroundColor: '#F178B6', width: 150, height:40}}>
+          <View style={{margin:10, backgroundColor: '#F178B6', width: 300, height:40}}>
             <TextInput
             style={styles.input}
             onChangeText={onChangeText}
             value={text}
+            clearButtonMode='always'
+            cursorColor="blue"
+            inlineImageLeft='search_icon'
             />
           </View>
           <TouchableOpacity onPress={() => setShowConverted(!showConverted)} style={{backgroundColor:'#F178B6', height: 30, width: 190, alignItems: 'center', justifyContent: 'center'}}>
@@ -65,18 +72,25 @@ function App ({ navigation }) {
           {
             showConverted == false ?
             <View>
-              <Text> please enter some text to convert</Text>
+              <Text> please enter some text to convert </Text>
             </View> 
             :
             showConverted == true ?
             <View>
               <Text> converted : {convertToMorse(text)} </Text>
-            </View> 
+              <TouchableOpacity  onPress={() => copy()}> 
+                <Text>copy</Text> 
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => setShowConverted(!showConverted) & onChangeText("")} style={{backgroundColor:'#F178B6', height: 30, width: 190, alignItems: 'center', justifyContent: 'center'}}>
+                <Text style={{color:'#fff', fontSize:16}}>Reset!</Text>
+              </TouchableOpacity>
+            </View>             
             :
             <View>
               <Text> error </Text>
             </View> 
           }
+          
       </View>   
     </SafeAreaView>
   );
