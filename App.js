@@ -9,13 +9,22 @@ import {
   TouchableOpacity
 } from 'react-native';
 import Clipboard from '@react-native-clipboard/clipboard';
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import LocalizedStrings from 'react-native-localization';
 
 function App ({ navigation }) {
+  
+  let strings = new LocalizedStrings({
+    "en":{
+      convert:"Convert to Morse Code!"
+    },
+    "tr":{
+      convert:"Mors Alfabesine Çevir!"
+    }
+  })
 
   const [showConverted, setShowConverted] = useState(false);
   const [text, onChangeText] = useState("");
-  const [clearText] = useState("")
 
   const morseCode = {
     "A": ".-",
@@ -52,7 +61,7 @@ function App ({ navigation }) {
   };
 
   const copy = () => Clipboard.setString(convertToMorse(text));
-  console.log(convertToMorse(text))
+
   return (
     <SafeAreaView style={{flex:1, backgroundColor:'#f1f1f1'}}>  
       <View style={styles.responsiveView}> 
@@ -67,7 +76,7 @@ function App ({ navigation }) {
             />
           </View>
           <TouchableOpacity onPress={() => setShowConverted(!showConverted)} style={{backgroundColor:'#F178B6', height: 30, width: 190, alignItems: 'center', justifyContent: 'center'}}>
-            <Text style={{color:'#fff', fontSize:16}}>Convert to Morse Code!</Text>
+            <Text style={{color:'#fff', fontSize:16}}> {strings.convert} </Text>
           </TouchableOpacity>
           {
             showConverted == false ?
