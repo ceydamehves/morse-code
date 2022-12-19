@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import MainScreen from './MainScreen';
-import OtherScreen from './OtherScreen';
+import MainScreen from './src/screens/MainScreen';
+import OtherScreen from './src/screens/OtherScreen';
 
 const Tab = createBottomTabNavigator();
 
