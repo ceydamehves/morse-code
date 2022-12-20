@@ -95,7 +95,7 @@ function MainScreen ({ navigation }) {
             :
             showConverted == true ?
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
-              <View style={{flexDirection: 'column', alignItems: 'center'}}>
+              <View style={{flexDirection: 'column', alignItems: 'center', marginLeft: 15, marginRight: 15}}>
                 <Text style={styles.textC}> {strings.converted} </Text>
                 <Text style={styles.textC}>  {convertToMorse(text)} </Text>
               </View>              
