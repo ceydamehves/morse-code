@@ -73,10 +73,10 @@ function MainScreen ({ navigation }) {
 
   return (
     <SafeAreaView style={styles.responsiveView}>        
-      <Text style={{color:'#434764', fontSize:16}}> {strings.enter} </Text>
-          <View style={{margin:10, backgroundColor:"#fff", borderColor: '#A89AF0', borderRadius: 7, borderLeftWidth: 0.9, borderRightWidth: 0.9, borderBottomWidth: 1.7, borderTopWidth: 0.3, width: 300, height:40}}>
+      <Text style={styles.textC}> {strings.enter} </Text>
+          <View style={styles.input}>
             <TextInput 
-            style={styles.input}
+            style={styles.inputText}
             onChangeText={onChangeText}
             value={text}
             clearButtonMode='always'
@@ -84,27 +84,27 @@ function MainScreen ({ navigation }) {
             inlineImageLeft='search_icon'
             />
           </View>
-          <TouchableOpacity onPress={() => setShowConverted(!showConverted)} style={{margin:10, borderColor: '#A89AF0', borderRadius: 1, backgroundColor:'#A89AF0', height: 30, width: 190, alignItems: 'center', justifyContent: 'center', borderRadius: 10}}>
-            <Text style={{color:'#fff', fontSize:16}}> {strings.convert} </Text>
+          <TouchableOpacity onPress={() => setShowConverted(!showConverted)} style={styles.button}>
+            <Text style={styles.textW}> {strings.convert} </Text>
           </TouchableOpacity>
           {
             showConverted == false ?
             <View>
-              <Text style={{color:'#434764', fontSize:16}}> {strings.please} </Text>
+              <Text style={styles.textC}> {strings.please} </Text>
             </View> 
             :
             showConverted == true ?
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
               <View style={{flexDirection: 'column', alignItems: 'center'}}>
-                <Text style={{color:'#434764', fontSize:18}}> {strings.converted} </Text>
-                <Text style={{color:'#434764', fontSize:18}}>  {convertToMorse(text)} </Text>
+                <Text style={styles.textC}> {strings.converted} </Text>
+                <Text style={styles.textC}>  {convertToMorse(text)} </Text>
               </View>              
               <View style={{flexDirection: 'row', marginTop: 10}}>
-                <TouchableOpacity  onPress={() => copy()} style={{margin:10, borderColor: '#A89AF0', borderRadius: 1, backgroundColor:'#A89AF0', height: 30, width: 100, alignItems: 'center', justifyContent: 'center', borderRadius: 15}}>
-                  <Text style={{color:'#fff', fontSize:16}}> {strings.copy} </Text> 
+                <TouchableOpacity  onPress={() => copy()} style={styles.buttons}>
+                  <Text style={styles.textW}> {strings.copy} </Text> 
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => setShowConverted(!showConverted) & onChangeText("")} style={{margin:10, borderColor: '#A89AF0', borderRadius: 1, backgroundColor:'#A89AF0', height: 30, width: 100, alignItems: 'center', justifyContent: 'center', borderRadius: 15}}>
-                  <Text style={{color:'#fff', fontSize:16}}> {strings.reset} </Text>
+                <TouchableOpacity onPress={() => setShowConverted(!showConverted) & onChangeText("")} style={styles.buttons}>
+                  <Text style={styles.textW}> {strings.reset} </Text>
                 </TouchableOpacity>
               </View>
             </View>             
@@ -124,11 +124,53 @@ const styles = StyleSheet.create({
     justifyContent: 'center', 
     alignItems: 'center'
   },
-  input: {
+  inputText: {
     color: '#434764',
     fontSize: 14,
     marginLeft: 5
+  },
+  input: {
+    margin:10, 
+    backgroundColor:"#fff", 
+    borderColor: '#A89AF0', 
+    borderRadius: 7, 
+    borderLeftWidth: 0.9, 
+    borderRightWidth: 0.9, 
+    borderBottomWidth: 1.7, 
+    borderTopWidth: 0.3, 
+    width: 300, 
+    height:40
+  },
+  button: {
+    margin:10, 
+    borderColor: '#A89AF0', 
+    borderRadius: 1, 
+    backgroundColor:'#A89AF0', 
+    height: 30, 
+    width: 190, 
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    borderRadius: 10
+  },
+  buttons: {
+    margin:10, 
+    borderColor: '#A89AF0', 
+    borderRadius: 1, 
+    backgroundColor:'#A89AF0', 
+    height: 30, 
+    width: 100, 
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    borderRadius: 15
+  },
+  textW: {
+    color:'#fff', 
+    fontSize:16
+  },
+  textC: {
+    color:'#434764', 
+    fontSize:16
   }
-});
+  });
 
 export default MainScreen;
