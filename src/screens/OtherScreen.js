@@ -20,7 +20,7 @@ function OtherScreen ({}) {
         },
         "tr":{
           title: "Merhaba! Mutlu Günler Dilerim :)", 
-          desc:"Bu uygulama ceydamehves tarafından tasarlanmış ve kodlanmıştır. \n Destek olmak için aşağıdaki butonlar aracılığıyla sosyal medya hesaplarıma ulaşabilirsiniz! \n Şimdiden ilginiz için çok teşekkür ederim, \n Sevgiler.",
+          desc:" Mors Alfabesi bilekliği satın almak için instagram ikonuna tıklayın! <3 \n \n Bu uygulama ceydamehves tarafından tasarlanmış ve kodlanmıştır. \n Destek olmak için aşağıdaki butonlar aracılığıyla sosyal medya hesaplarıma ulaşabilirsiniz! \n Şimdiden ilginiz için çok teşekkür ederim, \n Sevgiler.",
         }
       })
 
@@ -40,7 +40,7 @@ function OtherScreen ({}) {
                         .catch(err => console.error('An error occurred', err))}>
                 <Image style={styles.socialLogo} source={require('../assets/ethereum.png')}/> 
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => Linking.openURL('https://instagram.com/ceydamehves.apps')
+              <TouchableOpacity onPress={() => Linking.openURL('https://instagram.com/ceydamehves.cmoun')
                         .catch(err => console.error('An error occurred', err))}>
                 <Image style={styles.socialLogo} source={require('../assets/instagram.png')}/> 
               </TouchableOpacity> 
